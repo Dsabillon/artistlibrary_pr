@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+//Context
+import ArtistState from "./context/Artist/ArtistState";
+import AlbumState from "./context/Album/AlbumState";
+import SongState from "./context/Song/SongState";
+
+//Components
+import Artists from "./components/Artists";
+import Albums from "./components/Albums";
+import Songs from "./components/Songs";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ArtistState>
+      <AlbumState>
+        <SongState>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-4 border text-center">
+                <Artists />
+              </div>
+              <div className="col-md-4 border text-center">
+                <Albums />
+              </div>
+              <div className="col-md-4 border text-center">
+                <Songs />
+              </div>
+            </div>
+          </div>
+        </SongState>
+      </AlbumState>
+    </ArtistState>
   );
 }
 
