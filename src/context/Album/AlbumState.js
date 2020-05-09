@@ -2,13 +2,19 @@ import React, { useReducer } from "react";
 
 import AlbumContext from "./AlbumContext";
 import AlbumReducer from "./AlbumReducer";
-import { GET_ARTIST, ADD_ALBUM, VALIDATE_FORM } from "../../types";
+import {
+  GET_DEFAULT_ARTIST,
+  GET_ARTIST_ALBUM,
+  ADD_ALBUM,
+  VALIDATE_FORM,
+} from "../../types";
 
 const AlbumState = (props) => {
   const initialState = {
     albums: [],
     errorform: false,
     selectedartist: null,
+    selectedAlbums: [],
   };
 
   const [state, dispatch] = useReducer(AlbumReducer, initialState);
@@ -28,9 +34,17 @@ const AlbumState = (props) => {
     });
   };
 
-  const getArtist = (id) => {
+  //selecciona el artista al momento de submit
+  const getsSelectedArtistSubmit = (id) => {
     dispatch({
-      type: GET_ARTIST,
+      type: GET_DEFAULT_ARTIST,
+      payload: id,
+    });
+  };
+
+  const getArtistAlbums = (id) => {
+    dispatch({
+      type: GET_ARTIST_ALBUM,
       payload: id,
     });
   };
@@ -38,12 +52,14 @@ const AlbumState = (props) => {
   return (
     <AlbumContext.Provider
       value={{
+        selectedAlbums: state.selectedAlbums,
         selectedartist: state.selectedartist,
         albums: state.albums,
         errorform: state.errorform,
         addAlbum,
         setError,
-        getArtist,
+        getArtistAlbums,
+        getsSelectedArtistSubmit,
       }}
     >
       {props.children}

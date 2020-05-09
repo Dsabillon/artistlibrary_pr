@@ -8,12 +8,12 @@ import Album from "./Album";
 
 const AlbumsList = () => {
   const albumContext = useContext(AlbumContext);
-  const { albums } = albumContext;
+  const { selectedAlbums } = albumContext;
 
   return (
     <div>
       AlbumsList
-      {albums.map((item) => (
+      {selectedAlbums.map((item) => (
         <Album item={item} key={item.id} />
       ))}
     </div>

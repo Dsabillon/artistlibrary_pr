@@ -5,14 +5,13 @@ import ArtistContext from "../../context/Artist/ArtistContext";
 
 const Artist = ({ item }) => {
   const albumContext = useContext(AlbumContext);
-  const { getArtist } = albumContext;
+  const { getArtistAlbums } = albumContext;
 
   const artistContext = useContext(ArtistContext);
-  const { artist, getselectedArtist } = artistContext;
+  const { getselectedArtist } = artistContext;
 
   const handleSelect = (artist_id) => {
-    getArtist(artist_id);
-    getselectedArtist(artist_id);
+    getArtistAlbums(artist_id);
   };
   return (
     <>

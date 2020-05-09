@@ -3,11 +3,15 @@ import { v4 as uuidv4 } from "uuid";
 
 //Context
 import ArtistContext from "../context/Artist/ArtistContext";
+import AlbumContext from "../context/Album/AlbumContext";
 
 //Component
 import ArtistsList from "./Lists/ArtistsList";
 
 const Artists = () => {
+  const albumContext = useContext(AlbumContext);
+  const { getsSelectedArtistSubmit } = albumContext;
+
   const artistContext = useContext(ArtistContext);
   const { artists, errorform, addArtist, setError } = artistContext;
 
@@ -44,6 +48,8 @@ const Artists = () => {
 
     setError(false);
     addArtist(artist);
+    getsSelectedArtistSubmit(artist.id);
+
     setArtist({ name: "" });
     setShowForm(false);
   };
