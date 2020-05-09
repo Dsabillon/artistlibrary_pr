@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import SongContext from "../../context/Song/SongContext";
+
 import Song from "./Song";
 
 const SongsList = () => {
+  const songContext = useContext(SongContext);
+  const { songs } = songContext;
   return (
     <div>
       Songs List
-      <Song />
+      {songs.map((item) => (
+        <Song item={item} key={item.id} />
+      ))}
     </div>
   );
 };

@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import AlbumContext from "../../context/Album/AlbumContext";
+import ArtistContext from "../../context/Artist/ArtistContext";
 
 const Artist = ({ item }) => {
+  const albumContext = useContext(AlbumContext);
+  const { getArtist } = albumContext;
+
+  const artistContext = useContext(ArtistContext);
+  const { artist, getselectedArtist } = artistContext;
+
+  const handleSelect = (artist_id) => {
+    getArtist(artist_id);
+    getselectedArtist(artist_id);
+  };
   return (
     <>
       <div
@@ -9,7 +22,9 @@ const Artist = ({ item }) => {
         <p>{item.name}</p>
         <button type="button">Edit</button>
         <button type="button">Delete</button>
-        <button type="button">Select</button>
+        <button type="button" onClick={() => handleSelect(item.id)}>
+          Select
+        </button>
       </div>
     </>
   );

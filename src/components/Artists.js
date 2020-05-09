@@ -9,7 +9,7 @@ import ArtistsList from "./Lists/ArtistsList";
 
 const Artists = () => {
   const artistContext = useContext(ArtistContext);
-  const { errorform, addArtist, setError } = artistContext;
+  const { artists, errorform, addArtist, setError } = artistContext;
 
   //LocalState
   const [artist, setArtist] = useState({
@@ -75,14 +75,16 @@ const Artists = () => {
             <button type="submit">Submit</button>
           </form>
           {errorform ? (
-            <p className="alert alert-danger">Error: Nombre vacio</p>
+            <p className="alert alert-danger">Error: Empty fields</p>
           ) : null}
         </div>
       )}
 
-      <div>
-        <ArtistsList />
-      </div>
+      {artists.length === 0 ? null : (
+        <div>
+          <ArtistsList />
+        </div>
+      )}
     </>
   );
 };
