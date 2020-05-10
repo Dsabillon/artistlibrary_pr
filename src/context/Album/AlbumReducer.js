@@ -8,7 +8,6 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case ADD_ALBUM:
-      console.log(action.payload);
       return {
         ...state,
         albums: [action.payload, ...state.albums],
@@ -22,7 +21,6 @@ export default (state, action) => {
         errorform: action.payload,
       };
     case GET_DEFAULT_ARTIST:
-      console.log("getting a default artist selected when submit");
       return {
         ...state,
         selectedartist: action.payload,

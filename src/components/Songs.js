@@ -9,7 +9,7 @@ import SongsList from "./Lists/SongsList";
 
 const Songs = () => {
   const songContext = useContext(SongContext);
-  const { songs, errorform, addSong, setError } = songContext;
+  const { selectedalbum, songs, errorform, addSong, setError } = songContext;
 
   const [song, setSong] = useState({
     name: "",
@@ -23,6 +23,7 @@ const Songs = () => {
     setSong({
       [e.target.name]: e.target.value,
       id: uuidv4(),
+      self_album: selectedalbum,
     });
   };
 
@@ -38,8 +39,8 @@ const Songs = () => {
       return;
     }
 
-    addSong(song);
     setError(false);
+    addSong(song);
     setSong({ name: "" });
     setShowForm(false);
   };

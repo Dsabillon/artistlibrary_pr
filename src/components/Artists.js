@@ -49,7 +49,6 @@ const Artists = () => {
     setError(false);
     addArtist(artist);
     getsSelectedArtistSubmit(artist.id);
-
     setArtist({ name: "" });
     setShowForm(false);
   };

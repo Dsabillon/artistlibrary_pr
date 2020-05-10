@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
 
+//Context
 import AlbumContext from "../../context/Album/AlbumContext";
-import ArtistContext from "../../context/Artist/ArtistContext";
 
 const Artist = ({ item }) => {
   const albumContext = useContext(AlbumContext);
   const { getArtistAlbums } = albumContext;
-
-  const artistContext = useContext(ArtistContext);
-  const { getselectedArtist } = artistContext;
 
   const handleSelect = (artist_id) => {
     getArtistAlbums(artist_id);

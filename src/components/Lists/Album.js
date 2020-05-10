@@ -1,6 +1,15 @@
 import React, { useContext } from "react";
 
+//Context
+import SongContext from "../../context/Song/SongContext";
+
 const Album = ({ item }) => {
+  const songContext = useContext(SongContext);
+  const { getAlbumSong } = songContext;
+
+  const handleSelect = (id) => {
+    getAlbumSong(id);
+  };
   return (
     <>
       <div
@@ -10,7 +19,9 @@ const Album = ({ item }) => {
         <p>{item.year}</p>
         <button type="button">Edit</button>
         <button type="button">Delete</button>
-        <button type="button">Select</button>
+        <button type="button" onClick={() => handleSelect(item.id)}>
+          Select
+        </button>
       </div>
     </>
   );

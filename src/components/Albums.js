@@ -3,12 +3,15 @@ import { v4 as uuidv4 } from "uuid";
 
 //Context
 import AlbumContext from "../context/Album/AlbumContext";
-import ArtistContext from "../context/Artist/ArtistContext";
+import SongContext from "../context/Song/SongContext";
 
 //Components
 import AlbumsList from "./Lists/AlbumsList";
 
 const Albums = () => {
+  const songContext = useContext(SongContext);
+  const { getDefaultAlbum } = songContext;
+
   const albumContext = useContext(AlbumContext);
   const {
     albums,
@@ -52,6 +55,7 @@ const Albums = () => {
     }
     setError(false);
     addAlbum(album);
+    getDefaultAlbum(album.id);
     setAlbum({ name: "", year: 0 });
     setShowForm(false);
   };
