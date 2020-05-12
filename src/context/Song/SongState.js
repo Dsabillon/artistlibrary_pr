@@ -5,6 +5,7 @@ import {
   ADD_SONG,
   VALIDATE_FORM,
   RESET_SELECTED_SONGS,
+  DELETE_SONG,
 } from "../../types";
 
 import SongContext from "./SongContext";
@@ -66,6 +67,13 @@ const SongState = (props) => {
       payload: id,
     });
   };
+
+  const deleteSong = (id) => {
+    dispatch({
+      type: DELETE_SONG,
+      payload: id,
+    });
+  };
   return (
     <SongContext.Provider
       value={{
@@ -77,6 +85,7 @@ const SongState = (props) => {
         setError,
         getDefaultAlbum,
         getAlbumSong,
+        deleteSong,
       }}
     >
       {props.children}

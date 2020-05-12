@@ -4,6 +4,7 @@ import {
   ADD_SONG,
   VALIDATE_FORM,
   RESET_SELECTED_SONGS,
+  DELETE_SONG,
 } from "../../types";
 
 export default (state, action) => {
@@ -39,6 +40,12 @@ export default (state, action) => {
       return {
         ...state,
         selectedsong: [],
+      };
+    case DELETE_SONG:
+      return {
+        ...state,
+        songs: state.songs.filter((item) => item.id !== action.payload),
+        selectedsong: state.songs.filter((item) => item.id !== action.payload),
       };
 
     default:

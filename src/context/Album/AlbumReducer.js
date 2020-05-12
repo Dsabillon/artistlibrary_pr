@@ -3,6 +3,7 @@ import {
   GET_ARTIST_ALBUM,
   ADD_ALBUM,
   VALIDATE_FORM,
+  DELETE_ALBUM,
 } from "../../types";
 
 export default (state, action) => {
@@ -33,6 +34,14 @@ export default (state, action) => {
         selectedartist: action.payload,
         selectedAlbums: state.albums.filter(
           (album) => album.artist_creator === action.payload
+        ),
+      };
+    case DELETE_ALBUM:
+      return {
+        ...state,
+        albums: state.albums.filter((item) => item.id !== action.payload),
+        selectedAlbums: state.albums.filter(
+          (item) => item.id !== action.payload
         ),
       };
 

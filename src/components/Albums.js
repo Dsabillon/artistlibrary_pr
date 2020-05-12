@@ -31,6 +31,11 @@ const Albums = () => {
 
   //FUNCTIONS
   const handleClick = () => {
+    if (selectedartist === null) {
+      setError(true);
+      return;
+    }
+    setError(false);
     setShowForm(true);
   };
 
@@ -66,6 +71,9 @@ const Albums = () => {
       {!showForm ? (
         <div>
           <button onClick={handleClick}>Enter new Album</button>
+          {errorform ? (
+            <p className="alert alert-danger">Select an Artist</p>
+          ) : null}
         </div>
       ) : (
         <div>

@@ -7,6 +7,7 @@ import {
   GET_ARTIST_ALBUM,
   ADD_ALBUM,
   VALIDATE_FORM,
+  DELETE_ALBUM,
 } from "../../types";
 
 const AlbumState = (props) => {
@@ -49,6 +50,13 @@ const AlbumState = (props) => {
     });
   };
 
+  const deleteAlbum = (id) => {
+    dispatch({
+      type: DELETE_ALBUM,
+      payload: id,
+    });
+  };
+
   return (
     <AlbumContext.Provider
       value={{
@@ -60,6 +68,7 @@ const AlbumState = (props) => {
         setError,
         getArtistAlbums,
         getsSelectedArtistSubmit,
+        deleteAlbum,
       }}
     >
       {props.children}

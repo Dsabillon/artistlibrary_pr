@@ -2,7 +2,12 @@ import React, { useReducer } from "react";
 
 import ArtistContext from "./ArtistContext";
 import ArtistReducer from "./ArtistReducer";
-import { GET_SELECTED_ARTIST, ADD_ARTIST, VALIDATE_FORM } from "../../types";
+import {
+  GET_SELECTED_ARTIST,
+  ADD_ARTIST,
+  VALIDATE_FORM,
+  DELELTE_ARTIST,
+} from "../../types";
 
 const ArtistState = (props) => {
   const initialState = {
@@ -36,6 +41,13 @@ const ArtistState = (props) => {
     });
   };
 
+  const deleteArtist = (id) => {
+    dispatch({
+      type: DELELTE_ARTIST,
+      payload: id,
+    });
+  };
+
   return (
     <ArtistContext.Provider
       value={{
@@ -45,6 +57,7 @@ const ArtistState = (props) => {
         addArtist,
         setError,
         getselectedArtist,
+        deleteArtist,
       }}
     >
       {props.children}

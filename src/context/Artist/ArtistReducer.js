@@ -1,4 +1,9 @@
-import { GET_SELECTED_ARTIST, ADD_ARTIST, VALIDATE_FORM } from "../../types";
+import {
+  GET_SELECTED_ARTIST,
+  ADD_ARTIST,
+  VALIDATE_FORM,
+  DELELTE_ARTIST,
+} from "../../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -16,6 +21,11 @@ export default (state, action) => {
       return {
         ...state,
         artist: state.artists.filter((item) => item.id === action.payload),
+      };
+    case DELELTE_ARTIST:
+      return {
+        ...state,
+        artists: state.artists.filter((item) => item.id !== action.payload),
       };
 
     default:

@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+
+//Context
+import SongContext from "../../context/Song/SongContext";
 
 const Song = ({ item }) => {
+  const songContext = useContext(SongContext);
+  const { deleteSong } = songContext;
+
+  const handleDelete = (id) => {
+    deleteSong(id);
+  };
+
   return (
     <>
       <div
@@ -8,7 +18,9 @@ const Song = ({ item }) => {
       >
         <p>{item.name}</p>
         <button type="button">Edit</button>
-        <button type="button">Delete</button>
+        <button type="button" onClick={() => handleDelete(item.id)}>
+          Delete
+        </button>
       </div>
     </>
   );
